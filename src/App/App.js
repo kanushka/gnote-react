@@ -6,16 +6,16 @@ import AppGrid from './AppGrid/AppGrid';
 import ActionButton from './ActionButton/ActionButton';
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blue';
-import pink from '@material-ui/core/colors/pink';
+import green from '@material-ui/core/colors/green';
+import amber from '@material-ui/core/colors/amber';
 
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: pink,
+    primary: green,
+    secondary: amber,
   },
   status: {
-    danger: 'orange',
+    danger: 'deepOrange',
   },
 });
 class App extends Component {

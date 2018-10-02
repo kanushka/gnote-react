@@ -5,9 +5,9 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import NoteMenu from './NoteMenu/NoteMenu';
 import { IconButton } from '@material-ui/core';
 import Edit from '@material-ui/icons/Edit';
+import Delete from '@material-ui/icons/Delete';
 import NoteDialog from './NoteDialog/NoteDialog';
 
 const styles = {
@@ -75,13 +75,21 @@ class NoteCard extends Component {
                 </CardContent>
                 <CardActions classes={{ root: classes.cardActionRoot }}>                    
                     <IconButton
+                        aria-label="Delete"                    
+                        aria-haspopup="true"
+                        onClick={this.deleteBtnClick}
+                    >
+                        <Delete />
+                    </IconButton> 
+
+                    <IconButton
                         aria-label="Edit"                    
                         aria-haspopup="true"
                         onClick={this.editBtnClick}
                     >
                         <Edit />
                     </IconButton> 
-                    <NoteMenu />
+
                 </CardActions>
                 <NoteDialog
                     title={this.state.title}
