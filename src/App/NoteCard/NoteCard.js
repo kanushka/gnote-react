@@ -6,6 +6,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import NoteMenu from './NoteMenu/NoteMenu';
+import { IconButton } from '@material-ui/core';
+import Edit from '@material-ui/icons/Edit';
+import NoteDialog from './NoteDialog/NoteDialog';
 
 const styles = {
     card: {
@@ -30,36 +33,58 @@ const styles = {
 };
 
 class NoteCard extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            title : this.props.title || 'Title',
+            note : this.props.note || 'Note',
+        }
+        this.noteDialog = React.createRef();
+    }    
+
+    editBtnClick = event => {
+        this.noteDialog.current.handleClickOpen();
+    }
+
+    updateNote = (title, note) => {
+        console.log(note)
+        this.setState({
+            title: title,
+            note: note,
+        })
+    }
+
     render() {
         const { classes } = this.props;
-        const bull = <span className={classes.bullet}>•</span>;
 
         return (
             <Card className={classes.card}>
-            <CardContent>
-                <Typography className={classes.title} color="textSecondary">
-                Word of the Day
-                </Typography>
+            <CardContent>                
                 <Typography variant="headline" component="h2">
-                be
-                {bull}
-                nev
-                {bull}o{bull}
-                lent
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                adjective
-                </Typography>
+                {this.state.title}
+                </Typography>                
                 <Typography component="p">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
+                {this.state.note}            
                 </Typography>
             </CardContent>
-                <CardActions classes={{root:classes.cardActionRoot}}>                    
+                <CardActions classes={{ root: classes.cardActionRoot }}>                    
+                <IconButton
+                    aria-label="Edit"                    
+                    aria-haspopup="true"
+                    onClick={this.editBtnClick}
+                >
+                    <Edit />
+                </IconButton> 
                     <NoteMenu />
-            </CardActions>
+                </CardActions>
+                <NoteDialog
+                    title={this.state.title}
+                    note={this.state.note}  
+                    ref={this.noteDialog}
+                    onSave={this.updateNote}
+                />
             </Card>
+            
         );
     }
 }

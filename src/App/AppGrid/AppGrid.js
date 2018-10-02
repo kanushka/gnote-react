@@ -15,6 +15,23 @@ class AppGrid extends Component {
 
     state = {
         spacing: '16',
+        notes: [
+            {
+                id: 1001,
+                title: 'test title 1',
+                note: 'test note body 1'
+            },
+            {
+                id: 1002,
+                title: 'test title 2',
+                note: 'test note body 2'
+            },
+            {
+                id: 1003,
+                title: 'test title 3 ',
+                note: 'test note body 3'
+            },
+        ]
     };
     
     render() {
@@ -25,9 +42,12 @@ class AppGrid extends Component {
             <Grid container className={classes.root} spacing={16}>
                 <Grid item xs={12}>
                     <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(value => (
-                            <Grid key={value} item>
-                                <NoteCard />
+                        {this.state.notes.map(card => (
+                            <Grid key={card.id} item>
+                                <NoteCard
+                                    title={card.title}
+                                    note={card.note}
+                                />
                             </Grid>
                         ))}
                     </Grid>

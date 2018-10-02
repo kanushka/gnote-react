@@ -74,19 +74,30 @@ const styles = theme => ({
 
 class NavBar extends Component {
 
-  toggleSideBar(side, open) {
-    console.log('Click happened');
-    
-  }
+  constructor(props, context) {
+    super(props, context);
+    this.sideBar = React.createRef();
 
+  }  
+
+  toggleSideBar = () => {
+    console.log('toggleSideBar function called');
+    this.sideBar.current.funct();
+  };
+  
   render() {
       const { classes } = this.props;
       return (
           <div className={classes.root}>
           <AppBar position="static">
               <Toolbar>
-              <IconButton className={classes.menuButton} color="inherit" aria-label="Open drawer">
-                  <MenuIcon onClick={this.toggleSideBar}/>
+              <IconButton
+                className={classes.menuButton}
+                color="inherit"
+                aria-label="Open drawer"
+                onClick={this.toggleSideBar}
+              >
+                  <MenuIcon />
               </IconButton>
               <Typography className={classes.title} variant="title" color="inherit" noWrap>
                   {this.props.appName}
@@ -107,7 +118,7 @@ class NavBar extends Component {
               </div>
               </Toolbar>
           </AppBar>
-          <SideBar />
+          <SideBar ref={this.sideBar}/>
           </div>
       );
   }

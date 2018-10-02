@@ -18,22 +18,22 @@ const styles = {
   
 class SideBar extends Component {
 
-    state = {
-        top: false,
-        left: false,
-        bottom: false,
-        right: false,
-      };
-    
-    toggleDrawer = (side, open) => () => {
-        this.setState({
-          [side]: open,
-        });
+  state = {
+      top: false,
+      left: false,
+      bottom: false,
+      right: false,
     };
-    
-    testFunction() {
-        console.log('test function called');
-    }
+
+    toggleDrawer = (side, open) => () => {
+      this.setState({
+        [side]: open,
+      });
+  };
+  
+  funct = () => {
+    console.log('funct called');
+};
     
     render() {
         const { classes } = this.props;

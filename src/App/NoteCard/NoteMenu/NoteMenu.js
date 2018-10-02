@@ -58,7 +58,11 @@ class NoteMenu extends Component {
                     <MenuItem onClick={this.handleClose}>Delete</MenuItem>
                 </Menu>
                 
-                <NoteDialog ref={this.noteDialog}/>
+                <NoteDialog
+                    // title='test note'
+                    // note="sample note"
+                    ref={this.noteDialog}
+                />
             </div>
         );
     }
