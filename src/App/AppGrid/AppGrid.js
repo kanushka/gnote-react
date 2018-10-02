@@ -6,8 +6,10 @@ import NoteCard from '../NoteCard/NoteCard';
 
 const styles = theme => ({
     root: {
-        marginTop: '20px',
+        marginTop: '50px',
         flexGrow: 1,
+        textAlign: 'left',
+        padding: '20px',
     },    
   });
 
@@ -31,6 +33,26 @@ class AppGrid extends Component {
                 title: 'test title 3 ',
                 note: 'test note body 3'
             },
+            {
+                id: 1004,
+                title: 'test title 2',
+                note: 'test note body 2'
+            },
+            {
+                id: 1005,
+                title: 'test title 3 ',
+                note: 'test note body 3'
+            },
+            {
+                id: 1006,
+                title: 'test title 3 ',
+                note: 'test note body 3'
+            },
+            {
+                id: 1007,
+                title: 'test title 3 ',
+                note: 'test note body 3'
+            },
         ]
     };
     
@@ -39,11 +61,16 @@ class AppGrid extends Component {
         const { spacing } = this.state;
         
         return (
-            <Grid container className={classes.root} spacing={16}>
+            <Grid
+                container                
+                className={classes.root}
+                spacing={Number(spacing)}  
+                justify='space-around'
+            >
                 <Grid item xs={12}>
-                    <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
+                    <Grid container className={classes.demo} spacing={Number(spacing)}>
                         {this.state.notes.map(card => (
-                            <Grid key={card.id} item>
+                            <Grid key={card.id} item xs={12} sm={4} md={3}>
                                 <NoteCard
                                     title={card.title}
                                     note={card.note}

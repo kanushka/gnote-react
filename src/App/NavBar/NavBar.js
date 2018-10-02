@@ -9,7 +9,7 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 import { withStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import SideBar from '../SideBar/SideBar';
+
 
 const styles = theme => ({
   root: {
@@ -73,23 +73,12 @@ const styles = theme => ({
 
 
 class NavBar extends Component {
-
-  constructor(props, context) {
-    super(props, context);
-    this.sideBar = React.createRef();
-
-  }  
-
-  toggleSideBar = () => {
-    console.log('toggleSideBar function called');
-    this.sideBar.current.funct();
-  };
   
   render() {
       const { classes } = this.props;
       return (
           <div className={classes.root}>
-          <AppBar position="static">
+          <AppBar position="fixed">
               <Toolbar>
               <IconButton
                 className={classes.menuButton}
@@ -117,8 +106,7 @@ class NavBar extends Component {
                   />
               </div>
               </Toolbar>
-          </AppBar>
-          <SideBar ref={this.sideBar}/>
+          </AppBar>          
           </div>
       );
   }

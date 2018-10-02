@@ -47,7 +47,6 @@ class NoteCard extends Component {
     }
 
     updateNote = (title, note) => {
-        console.log(note)
         this.setState({
             title: title,
             note: note,
@@ -59,22 +58,29 @@ class NoteCard extends Component {
 
         return (
             <Card className={classes.card}>
-            <CardContent>                
-                <Typography variant="headline" component="h2">
-                {this.state.title}
-                </Typography>                
-                <Typography component="p">
-                {this.state.note}            
-                </Typography>
-            </CardContent>
+                <CardContent>                
+                    <Typography
+                        variant="headline"
+                        component="h2"
+                        noWrap
+                    >
+                        {this.state.title}
+                    </Typography>                
+                    <Typography
+                        component="p"
+                        noWrap
+                    >
+                        {this.state.note}            
+                    </Typography>
+                </CardContent>
                 <CardActions classes={{ root: classes.cardActionRoot }}>                    
-                <IconButton
-                    aria-label="Edit"                    
-                    aria-haspopup="true"
-                    onClick={this.editBtnClick}
-                >
-                    <Edit />
-                </IconButton> 
+                    <IconButton
+                        aria-label="Edit"                    
+                        aria-haspopup="true"
+                        onClick={this.editBtnClick}
+                    >
+                        <Edit />
+                    </IconButton> 
                     <NoteMenu />
                 </CardActions>
                 <NoteDialog

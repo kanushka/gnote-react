@@ -34,7 +34,6 @@ class NoteDialog extends Component {
     }
 
     saveNote = () => {
-        console.log(this.state.note);
         this.props.onSave(this.state.title, this.state.note);
         this.handleClose();
     }
